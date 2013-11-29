@@ -15,7 +15,7 @@ The premise of this strategy is that we will purchase more shares when the price
 But does this really yield higher returns?
 Let's find out!
 
-## Simulation
+### Simulation
 
 If we know the prices of a security at each investment opportunity, then we can calculate what our return would be if we invested as a lump sum, or using dollar cost averaging.
 Here's some sample scala code:
@@ -117,7 +117,7 @@ println("Simulated ratio for percentChange: " + compare(percentChangePrices))
 
 From this simulation, it looks like dollar cost averaging does not outperform a lump sum investment.
 
-## But why?
+### But why?
 
 When price fluctuations are truly random, prices are just as likely to go up in the future as they are to go down.
 While we might think that we are buying "more shares when the price is low", there are no guarantees the price will
@@ -128,7 +128,7 @@ If the security has a positive trend, then dollar cost averaging in fact does mu
 This is because money invested in later periods spends less time invested, and doesn't get as much time to take advantage of the likely increase in value.
 If you have reason to believe that, on average, the market increases in value, then dollar cost averaging is an inferior strategy.
 
-## Conclusions
+### Conclusions
 
 Dollar cost averaging is a fine investment strategy for at least one reason.
 For most of us, the strategy lines up well with how we get paid (on a monthly or weekly schedule).
