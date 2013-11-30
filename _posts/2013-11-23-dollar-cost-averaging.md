@@ -8,7 +8,7 @@ tags: ["scala", "finance", "math"]
 
 Is it possible to tak advantage of random fluctuations in a stock price, in such a way to improve your overall return?
 
-Dollar cost averaging is a strategy that attemps to do just that.
+Dollar cost averaging is a strategy that attempts to do just that.
 Instead of investing a lump sum of money into a security, we stagger that investment over multiple periods by investing an equal dollar amount every period.
 So, if we have $1000 to invest, we might instead opt to invest $100 every month for 10 months.
 The premise of this strategy is that we will purchase more shares when the price is low, and fewer when the price is high.
@@ -133,6 +133,6 @@ If you have reason to believe that, on average, the market increases in value, t
 Dollar cost averaging is a fine investment strategy for at least one reason.
 For most of us, the strategy lines up well with how we get paid (on a monthly or weekly schedule).
 Investing some part of every paycheque is a great way to make sure we are saving money for when we need it.
-But, there's no reason to believe that this strategy will help you take advantage of market fluctuations in any meaningfull way.
+But there's no reason to believe that this strategy will help you take advantage of market fluctuations in any meaningful way.
 Better luck next time!
 
