@@ -6,7 +6,7 @@ tags: ["scala", "finance", "math"]
 ---
 {% include JB/setup %}
 
-Is it possible to tak advantage of random fluctuations in a stock price, in such a way to improve your overall return?
+Is it possible to take advantage of random fluctuations in a stock price, in such a way to improve your overall return?
 
 Dollar cost averaging is a strategy that attempts to do just that.
 Instead of investing a lump sum of money into a security, we stagger that investment over multiple periods by investing an equal dollar amount every period.
