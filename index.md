@@ -1,12 +1,15 @@
 ---
 layout: page
-title: Patrick Hayes
+title: blog.patrickhay.es
+pagetitle: Patrick Hayes
 ---
 {% include JB/setup %}
 
 Hi there. My name is Patrick Hayes.
 I live in New York City, and I'm a software engineer at Foursquare.
 This is a blog where you can read blog posts.
+
+You can find me on twitter at <a href="http://twitter.com/pfjhayes">@pfjhayes</a>.
 
 <hr/>
 
