@@ -21,14 +21,14 @@ If we know the prices of a security at each investment opportunity, then we can 
 Here's some sample scala code:
 
 {% highlight scala %}
-def dollarCostValue(initialCapital: Double, prices: List[Double]) = {
+def dollarCostValue(initialCapital: Double, prices: List[Double]): Double = {
   val closingPrice = prices.last
   val dailySpend = initialCapital / prices.length
   val sharesOwned = prices.map(dailySpend / _).sum
   sharesOwned * closingPrice
 }
 
-def lumpSumValue(initialCapital: Double, prices: List[Double]) = {
+def lumpSumValue(initialCapital: Double, prices: List[Double]): Double = {
   val startingPrice = prices.head
   val closingPrice = prices.last
   val sharesOwned = initialCapital / startingPrice
@@ -47,7 +47,7 @@ There are multiple methods of randomly producing stock prices (some better than 
 val random = new Random()
 
 // Price either goes up or down a fixed amount each day
-def simpleWalkPrices(initialPrice: Double, deviance: Double) = {
+def simpleWalkPrices(initialPrice: Double, deviance: Double): Iterator[Double] = {
   Iterator.iterate(initialPrice)(price =>
     if (random.nextBoolean()) {
       price + (deviance * initialPrice)
@@ -57,7 +57,7 @@ def simpleWalkPrices(initialPrice: Double, deviance: Double) = {
 }
 
 // Price goes up or down a random amount each day
-def randomWalkPrices(initialPrice: Double, deviance: Double) = {
+def randomWalkPrices(initialPrice: Double, deviance: Double): Iterator[Double] = {
   val range = (initialPrice * deviance)
   Iterator.iterate(initialPrice)(price => {
     val change = random.nextDouble() * 2 * range - range
@@ -66,7 +66,7 @@ def randomWalkPrices(initialPrice: Double, deviance: Double) = {
 }
 
 // Price goes up or down a random percent each day
-def percentChangePrices(startingPrice: Double, deviance: Double) = {
+def percentChangePrices(startingPrice: Double, deviance: Double): Iterator[Double] = {
   val range = deviance
   Iterator.iterate(initialPrice)(price => {
     val change = random.nextDouble() * 2 * range - range
@@ -88,7 +88,7 @@ val numTrials = 10000
 def simulate(
   strategy: (Double, List[Double]) => Double,
   generator: (Double, Double) => Iterator[Double]
-) = {
+): Double = {
   val trials = for {
     t <- (1 to numTrials)
   } yield {
@@ -102,8 +102,8 @@ def simulate(
 Now, we can take a look at the results.
 
 {% highlight scala %}
-def compare(name: String, generator: (Double, Double) => Iterator[Double]) = {
-  simulate(lumpSumValue _, generator) / simulate(dollarCostValue _, generator)
+def compare(generator: (Double, Double) => Iterator[Double]): Double = {
+  simulate(lumpSumValue, generator) / simulate(dollarCostValue, generator)
 }
 
 println("Simulated ratio for simpleWalk: " + compare(simpleWalkPrices))
