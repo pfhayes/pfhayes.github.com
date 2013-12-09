@@ -88,6 +88,8 @@ val deviance = 0.03
 val days = 100
 val numTrials = 10000
 
+// Returns the mean value of `strategy` when applied to the prices from `generator`
+// over a large number of trials
 def simulate(
   strategy: (Double, List[Double]) => Double,
   generator: (Double, Double) => Iterator[Double]
@@ -105,6 +107,7 @@ def simulate(
 Let's look at the results!
 
 {% highlight scala %}
+// Returns the ratio by which lumpSumValue outperforms dollarCostValue
 def compare(generator: (Double, Double) => Iterator[Double]): Double = {
   simulate(lumpSumValue, generator) / simulate(dollarCostValue, generator)
 }
