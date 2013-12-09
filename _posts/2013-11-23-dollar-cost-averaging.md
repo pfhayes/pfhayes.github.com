@@ -124,22 +124,11 @@ From this simulation, it looks like dollar cost averaging does not outperform a 
 
 The above models don't necessarily capture all the properties we might expect from a fluctuating stock price.
 Another common method of simulating stock prices is with a [log-normal distribution][1].
-A log-normal distribution has the property that the price is as likely to double as it is to halve (and as likely to triple as it is to be thirded, etc.).
+A log-normal distribution has the property that the price is as likely to double as it is to halve (and as likely to triple as it is to be thirded, and so on).
 
 [1]: http://en.wikipedia.org/wiki/Log-normal_distribution
 
 {% highlight scala %}
-// Price is multipled by either N or 1/N
-def ratioChangePrices(startingPrice: Double, deviance: Double): Iterator[Double] = {
-  Iterator.iterate(initialPrice)(price => {
-    if (random.nextBoolean()) {
-      price * (1 + deviance)
-    } else {
-      price / (1 + deviance)
-    }
-  })
-}
-
 // Log-normal distribution
 def logNormalPrices(startingPrice: Double, deviance: Double): Iterator[Double] = {
   Iterator.iterate(initialPrice)(price => {
@@ -148,14 +137,15 @@ def logNormalPrices(startingPrice: Double, deviance: Double): Iterator[Double] =
 }
 {% endhighlight %}
 
-Unlike the previous models, these models have a positive expected drift over time.
+Unlike the previous models, this model has a positive expected drift over time.
+An easy way to see this is to consider a simplified case where the stock price can only double or halve.
 If a stock costs $20 on the first day, and is equally likely to cost $10 or $40 the next day, then the expected value on the second day is $25.
 
+Let's see how it does!
+
 {% highlight scala %}
-println("Simulated ratio for ratioChange: " + compare(ratioChangePrices))
 println("Simulated ratio for logNormal: " + compare(logNormalPrices))
 
-// Simulated ratio for ratioChange: 1.028479119173095
 // Simulated ratio for logNormal: 1.0233932140835074
 {% endhighlight %}
 
@@ -170,7 +160,7 @@ When price fluctuations are truly random, each day's transition is independent o
 While we might think that we are buying "more shares when the price is low", there are no guarantees the price will
 "bounce back up" afterwards.
 
-If you have reason to believe that, on average, the market increases in value, then dollar cost averaging is an inferior strategy.
+If you believe that the market increases in value on average, then dollar cost averaging is an inferior strategy.
 
 ### Conclusions
 
